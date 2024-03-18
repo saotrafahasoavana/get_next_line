@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saandria <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/18 00:26:00 by saotra            #+#    #+#             */
-/*   Updated: 2024/03/18 11:55:23 by saandria         ###   ########.fr       */
+/*   Created: 2024/03/18 15:18:28 by saandria          #+#    #+#             */
+/*   Updated: 2024/03/18 15:18:39 by saandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 //lecture du fichier
 static char	*read_and_return(int fd, char *content, char *buff)
@@ -60,22 +60,22 @@ static char	*def_and_get_line(char *line)
 
 char	*get_next_line(int fd)
 {
-	static char	*content;
+	static char	*content[MAX_FD];
 	char		*line;
 	char		*buff;
 
 	buff = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (fd < 0 || BUFFER_SIZE <= 0)
 	{
-		free(content);
+		free(content[fd]);
 		free(buff);
 		return (NULL);
 	}
 	if (!buff)
 		return (NULL);
-	line = read_and_return(fd, content, buff);
+	line = read_and_return(fd, content[fd], buff);
 	if (!line)
 		return (NULL);
-	content = def_and_get_line(line);
+	content[fd] = def_and_get_line(line);
 	return (line);
 }
