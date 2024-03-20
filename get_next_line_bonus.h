@@ -6,7 +6,7 @@
 /*   By: saandria <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 15:18:51 by saandria          #+#    #+#             */
-/*   Updated: 2024/03/18 15:18:55 by saandria         ###   ########.fr       */
+/*   Updated: 2024/03/20 10:53:19 by saandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@
 int		ft_strlen(const char *s);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strjoin(char *s1, char *s2);
-char	*ft_strdup(char *s);
 char	*ft_substr(const char *s, int start, int len);
 char	*get_next_line(int fd);
 

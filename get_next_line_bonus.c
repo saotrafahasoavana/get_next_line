@@ -6,13 +6,12 @@
 /*   By: saandria <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 15:18:28 by saandria          #+#    #+#             */
-/*   Updated: 2024/03/18 15:18:39 by saandria         ###   ########.fr       */
+/*   Updated: 2024/03/20 10:51:24 by saandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-//lecture du fichier
 static char	*read_and_return(int fd, char *content, char *buff)
 {
 	int	rd;
@@ -31,16 +30,11 @@ static char	*read_and_return(int fd, char *content, char *buff)
 			break ;
 		*(buff + rd) = '\0';
 		content = ft_strjoin(content, buff);
-		if (!content)
-			content = ft_strdup("");
-		if (ft_strchr(buff, '\n'))
-			break ;
 	}
 	free(buff);
 	return (content);
 }
 
-//definir la ligne
 static char	*def_and_get_line(char *line)
 {
 	char	*content;
@@ -74,7 +68,7 @@ char	*get_next_line(int fd)
 	if (!buff)
 		return (NULL);
 	line = read_and_return(fd, content[fd], buff);
-	if (!line)
+	if (!line || *line == '\0')
 		return (NULL);
 	content[fd] = def_and_get_line(line);
 	return (line);

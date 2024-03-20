@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: saandria <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/15 17:35:04 by saotra            #+#    #+#             */
-/*   Updated: 2024/03/18 11:36:00 by saandria         ###   ########.fr       */
+/*   Created: 2024/03/19 10:02:53 by saandria          #+#    #+#             */
+/*   Updated: 2024/03/20 10:52:19 by saandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,26 +67,6 @@ char	*ft_strjoin(char *s1, char *s2)
 	return (s);
 }
 
-char	*ft_strdup(char	*s)
-{
-	char	*d;
-	int		i;
-
-	i = 0;
-	if (!s)
-		return (NULL);
-	d = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
-	if (!d)
-		return (NULL);
-	while (s[i])
-	{
-		d[i] = s[i];
-		i++;
-	}
-	d[i] = '\0';
-	return (d);
-}
-
 char	*ft_substr(char const *s, int start, int len)
 {
 	int		i;
@@ -97,7 +77,7 @@ char	*ft_substr(char const *s, int start, int len)
 	if (s == NULL)
 		return (NULL);
 	if (start >= ft_strlen(s))
-		return (ft_strdup(""));
+		return (NULL);
 	len_sub = ft_strlen(s) - start;
 	if (len < len_sub)
 		len_sub = len;
