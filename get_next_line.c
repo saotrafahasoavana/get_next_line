@@ -6,7 +6,7 @@
 /*   By: saandria <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 10:02:20 by saandria          #+#    #+#             */
-/*   Updated: 2024/03/20 10:50:14 by saandria         ###   ########.fr       */
+/*   Updated: 2024/03/20 09:32:03 by saandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ static char	*read_and_return(int fd, char *content, char *buff)
 			break ;
 		*(buff + rd) = '\0';
 		content = ft_strjoin(content, buff);
+//		if (!content)
+//			content = ft_strdup("");
 	}
 	free(buff);
 	return (content);
@@ -71,7 +73,10 @@ char	*get_next_line(int fd)
 		return (NULL);
 	line = read_and_return(fd, content, buff);
 	if (!line || *line == '\0')
+	{
+		//free(line);
 		return (NULL);
+	}
 	content = def_and_get_line(line);
 	return (line);
 }
